@@ -1,0 +1,92 @@
+/* 全体の背景色とフォント設定 */
+body {
+  background-color: #1a202c;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* コンテンツエリア */
+main {
+  flex: 1;
+}
+
+/* ヘッダー */
+header {
+  background-color: #2d3748;
+  padding: 10px;
+  text-align: center;
+}
+
+header .luxury-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+}
+
+/* 説明文 */
+.description {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin: 10px auto;
+  border-radius: 5px;
+  max-width: 800px;
+  font-size: 14px;
+}
+
+/* キャストグリッド */
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 横5列 */
+  gap: 20px; /* 各アイテム間のスペース */
+  padding: 20px;
+  max-width: 1600px; /* ページ幅を1600pxに広げる */
+  margin: 0 auto;
+}
+
+.cast-item {
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.cast-item:hover {
+  transform: scale(1.05);
+}
+
+.cast-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* フッター */
+footer {
+  background-color: #2d3748;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+footer a {
+  color: #63b3ed;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

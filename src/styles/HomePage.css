@@ -1,0 +1,251 @@
+/* ヘッダー（トップバナー） */
+.home-header {
+  position: relative;
+  width: 100%;
+  height: 40vh; /* ビューポートの40%の高さ */
+  background-image: url('../assets/images/new_banner.png'); /* 背景画像を設定 */
+  background-size: cover; /* 画像を画面いっぱいに表示 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像が繰り返されないように設定 */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+/* 店舗情報オーバーレイ（ヘッダーテキストに黒い半透明背景を追加） */
+.store-info-overlay {
+  position: absolute;
+  top: 10px; /* 上から20pxの位置に配置 */
+  left: 50%; /* 横方向で中央に配置 */
+  transform: translateX(-50%); /* 横方向で中央に正確に配置 */
+  background-color: rgba(0, 0, 0, 0.7); /* 黒い半透明の背景 */
+  color: white; /* テキストの色を白に設定 */
+  padding: 1px 100px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 90%;
+  font-size: 1.0rem; /* フォントサイズ調整 */
+}
+
+/* 新しいヘッダーテキストに黒い半透明背景を追加 */
+.additional-header-info {
+  position: absolute; /* 位置を絶対指定 */
+  top: 250px; /* 上から20pxの位置に配置 */
+  left: 50%; /* 横中央に配置 */
+  transform: translateX(-50%); /* 横方向で中央に正確に配置 */
+  background-color: rgba(0, 0, 0, 0.7); /* 黒い半透明の背景 */
+  color: white; /* テキストの色を白に設定 */
+  padding: 10px 150px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem; /* フォントサイズ調整 */
+}
+
+/* ツイッターウィジェット */
+.twitter-widget-container {
+  position: absolute; /* 絶対配置 */
+  top: 380px; /* ヘッダーから20px下に配置 */
+  left: 88%; /* 横中央に配置 */
+  transform: translateX(-50%); /* 横方向で中央に正確に配置 */
+  z-index: 1000; /* 他の要素の上に表示 */
+  margin-top: 10px;
+  width: 400px;  /* 幅を400pxに設定 */
+  height: 600px; /* 高さを600pxに設定 */
+}
+
+.store-info-overlay p {
+  margin: 5px 0;
+  word-wrap: break-word;
+}
+
+/* ヘッダー中央テキスト */
+.header-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  width: 30%;
+}
+
+.header-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+.header-text p {
+  font-size: 1.2rem;
+}
+
+/* メインセクション */
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 40px auto;
+  margin-left: 220px;
+}
+
+/* 画像メニュー */
+.image-menu {
+  display: flex;
+  gap: 50px; /* 画像間の余白を50pxに広げる */
+  justify-content: flex-start; /* 左揃えに配置 */
+  flex-wrap: wrap; /* レスポンシブに対応できるように折り返しを設定 */
+  margin-left: 70px; /* 画像メニュー全体を左にずらす */
+  margin-bottom: 20px;
+}
+
+.image-menu a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* 縦に配置 */
+  align-items: center;
+  width: 300px; /* 画像の幅を広げる */
+}
+
+/* 画像の位置を少し下げる */
+.image-menu a img {
+  width: 100%; /* 親要素（aタグ）の幅に合わせて画像を広げる */
+  height: 150px; /* 画像の高さを固定 */
+  object-fit: cover; /* 画像を枠いっぱいにフィット（トリミングあり） */
+  border: 2px solid #fff;
+  border-radius: 4px;
+  transition: 0.3s;
+  margin-top: 20px; /* 画像を少し下げる */
+}
+
+.image-menu a img:hover {
+  opacity: 0.8;
+  border-color: #ff3333;
+}
+
+.image-menu a .button {
+  background-color: #ccc;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.image-menu a .button:hover {
+  background-color: #aaa;
+}
+
+/* システムメニュー */
+.system-menu {
+  text-align: left; /* テーブル全体を左寄せ */
+  margin-left: 77px; /* 左から100px移動 */
+  margin-top: 0px; /* 上から50px移動 */
+}
+
+.system-menu table {
+  width:45%; /* テーブル全体の幅を100%に調整 */
+  border-collapse: collapse;
+  color: #fff;
+  background-color: rgba(30, 30, 30, 0.9); /* テーブル全体の背景色を統一 */
+}
+
+.system-menu th,
+.system-menu td {
+  border: 1px solid #fff;
+  padding: 10px;
+  text-align: left; /* 左揃えに統一 */
+  vertical-align: top; /* 上揃えに統一 */
+  background-color: rgba(30, 30, 30, 0.9); /* セルの背景色を統一 */
+}
+
+/* ヘッダーの背景色も統一 */
+.system-menu th {
+  background-color: rgba(30, 30, 30, 0.9);
+  font-weight: bold;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* 各列の幅を個別設定可能に */
+.system-menu th:nth-child(1),
+.system-menu td:nth-child(1) {
+  width: 25%; /* 1列目の幅 */
+}
+
+.system-menu th:nth-child(2),
+.system-menu td:nth-child(2) {
+  width: 25%; /* 2列目の幅 */
+}
+
+.system-menu th:nth-child(3),
+.system-menu td:nth-child(3) {
+  width: 25%; /* 3列目の幅 */
+}
+
+.system-menu th:nth-child(4),
+.system-menu td:nth-child(4) {
+  width: 25%; /* 4列目の幅 */
+}
+
+
+
+/* フッター風のテキスト追加 */
+.footer-text {
+  background-color: #111;
+  color: #999;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 40px;
+  position: absolute; 
+  left: 50%; /* 画面の中央 */
+  transform: translateX(-50%); /* 中央に配置 */
+}
+
+/* お客様へのお願い（ヘッダーのテキストと同じ設定） */
+.home-container {
+  position: relative; /* ここで親要素にrelativeを設定 */
+}
+
+/* お客様へのお願い */
+.customer-request {
+  position: absolute; /* 絶対位置指定 */
+  top: 70%; /* 上からの位置調整（必要に応じて変更） */
+  left: 47%; /* 横の左端に配置 */
+  transform: translateX(0); /* 横方向で左詰めに配置 */
+  background-color: transparent; /* 背景色を透明に設定 */
+  color: white; /* テキストの色 */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left; /* 左詰めに設定 */
+  font-size: 1.2rem; /* フォントサイズ調整 */
+  width: 80%; /* 必要に応じて調整 */
+  z-index: 1000; /* 他の要素の上に表示 */
+}
+
+/* オーバーレイ付きテキスト */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.customer-request li {
+  font-size: 1.0rem;
+  margin-bottom: 5px;
+}
+

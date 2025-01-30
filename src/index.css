@@ -1,0 +1,16 @@
+/* Bootstrapのインポート */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* すべてのページのフォントを統一 */
+body {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif !important; /* フォントを統一 */
+  color: #fff; /* 文字色を統一 */
+  background-color: #1a1a1a; /* 背景色を統一 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Courier New", monospace !important; /* コード部分のフォントを変更 */
+}
