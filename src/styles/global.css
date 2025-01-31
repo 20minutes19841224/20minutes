@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+  .main-grid, .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .image-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bottle-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

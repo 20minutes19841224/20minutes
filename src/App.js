@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import StaffPage from "./pages/StaffPage";
 import CastPage from "./pages/CastPage";
 import BottleMenuPage from "./pages/BottleMenu";
+import "./styles/global.css";
 import ReservationPage from "./pages/ReservationPage";
 
 const App = () => {
