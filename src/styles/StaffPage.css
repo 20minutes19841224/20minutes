@@ -1,64 +1,62 @@
-/* スタッフページのコンテナ */
+/* スタッフページのレイアウト */
 .staff-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid !important; /* 強制的にgridを適用 */
+  grid-template-columns: repeat(2, 1fr) !important; /* 横2列 */
+  grid-template-rows: repeat(2, auto) !important; /* 縦2行 */
+  gap: 30px;
   justify-content: center;
-  gap: 20px; /* 画像間の間隔 */
+  align-items: center;
   margin-top: 20px;
+  max-width: 900px; /* 最大幅を900pxに制限 */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* スタッフの個別カード */
 .staff-card {
-  width: var(--staff-image-width, 250px);
   text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* カード内の要素を中央揃え */
+  justify-content: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* スタッフ画像 */
 .staff-card img {
   width: 100%;
-  height: var(--staff-image-height, 300px);
+  max-width: 350px;
+  height: auto;
   object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #fff;
+  border-radius: 12px;
+  border: 3px solid #fff;
   transition: transform 0.3s;
 }
 
-/* 画像のホバー時の動き */
-.staff-card img:hover {
-  transform: scale(1.05);
-}
-
-/* スタッフ名 */
-.staff-card h3 {
-  color: white;
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-/* スタッフ詳細（役職など） */
-.staff-card p {
-  color: #ccc;
-  font-size: 1rem;
-  margin-top: 5px;
-}
-
-/* スマホ（画面幅 768px 以下）では縦並びかつ画像サイズを縮小 */
+/* スマホ（768px以下）で1列にする */
 @media (max-width: 768px) {
   .staff-container {
+    display: flex !important;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .staff-card {
-    width: 90%; /* 画面の横幅に収まるように調整 */
-    max-width: 300px; /* 最大幅を設定 */
+    width: 90%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .staff-card img {
-    height: auto; /* 高さを自動調整 */
-    max-height: 250px; /* スマホでは高さを縮小 */
+    height: auto;
+    max-width: 250px;
   }
 }
