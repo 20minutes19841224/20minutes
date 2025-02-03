@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const CLIENT_ID = "YOUR_CLIENT_ID";  // 取得済みのクライアントID
+const REDIRECT_URI = "YOUR_BACKEND_REDIRECT_URI";  // X APIのリダイレクトURL
+
 const ReservationPage = () => {
     const [user, setUser] = useState(null);
     const [reservation, setReservation] = useState(null);
@@ -14,15 +17,34 @@ const ReservationPage = () => {
 
     useEffect(() => {
         const authenticateTwitter = async () => {
-            try {
-                const response = await axios.get('/api/auth/twitter');
-                if (response.data.authenticated) {
-                    setUser(response.data.user);
-                    fetchReservationData(response.data.user.x_id);
-                    fetchAvailableCasts();
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get("code");
+
+            if (!code) {
+                // ログインしていない場合、X APIのOAuth 2.0認証画面へリダイレクト
+                const STATE = Math.random().toString(36).substring(7);
+                const authURL = `https://twitter.com/i/oauth2/authorize?` +
+                    `client_id=${CLIENT_ID}` +
+                    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+                    `&response_type=code` +
+                    `&scope=tweet.read users.read` +
+                    `&state=${STATE}` +
+                    `&code_challenge=challenge` +
+                    `&code_challenge_method=plain`;
+
+                window.location.href = authURL;
+            } else {
+                // すでにX APIから認可コードが取得されている場合、バックエンドでX IDを取得
+                try {
+                    const response = await axios.get(`/api/auth/callback?code=${code}`);
+                    if (response.data.x_id) {
+                        setUser({ x_id: response.data.x_id, name: response.data.name });
+                        fetchReservationData(response.data.x_id);
+                        fetchAvailableCasts();
+                    }
+                } catch (error) {
+                    console.error('X API認証エラー', error);
                 }
-            } catch (error) {
-                console.error('Twitter認証エラー', error);
             }
         };
 
@@ -51,7 +73,7 @@ const ReservationPage = () => {
 
         const handleNoReservationFound = () => {
             setReservation({
-                name: user?.name || "", 
+                name: user?.name || "",
                 last_reserved_cast: "なし",
                 preferred_time: "未設定"
             });
@@ -114,7 +136,7 @@ const ReservationPage = () => {
                     <button onClick={handleReservation}>予約確定</button>
                 </div>
             ) : (
-                <p>ログインしてください。</p>
+                <p>ログインしてください...</p>
             )}
         </div>
     );
